@@ -6,6 +6,12 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TemperatureMonitor.Persistence.Domain\TemperatureMonitor.Persistence.Domain.csproj" />
+    <ProjectReference Include="..\TemperatureMonitor.Persistence\TemperatureMonitor.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
