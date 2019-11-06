@@ -13,4 +13,8 @@
     <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TemperatureMonitor.Persistence.Domain\TemperatureMonitor.Persistence.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
