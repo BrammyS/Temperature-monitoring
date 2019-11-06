@@ -14,6 +14,6 @@ namespace TemperatureMonitor.Persistence.UnitsOfWorks
         /// <summary>
         /// Contains all the queries to the <see cref="Measurement"/> table/collection.
         /// </summary>
-        IMeasurementRepository Logs { get; }
+        IMeasurementRepository Measurements { get; }
     }
 }
