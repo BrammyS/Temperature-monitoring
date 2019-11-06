@@ -1,0 +1,7 @@
+bin/
+obj/
+DatabaseConfig.json
+TestResults/
+packages/
+.vs/
+Shared/ColorChan.ImageGeneration/wkhtmltoimage.exe
