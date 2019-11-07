@@ -1,13 +1,29 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using TemperatureMonitor.Persistence.MongoDb;
+using TemperatureMonitor.Persistence.MongoDb.Repositories;
+using TemperatureMonitor.Persistence.MongoDb.UnitsOfWork;
+using TemperatureMonitor.Persistence.Repositories;
+using TemperatureMonitor.Persistence.UnitsOfWorks;
 
 namespace TemperatureMonitor
 {
-    class Program
+
+    public class Program
     {
-        static async Task Main()
+
+        static Task Main()
         {
-            Console.WriteLine("Hello World!");
+
+            //setup our DI
+            var serviceProvider = new ServiceCollection()
+                                  .AddSingleton<MongoContext>()
+                                  .AddSingleton<TemperatureMonitor>()
+                                  .AddScoped<IUnitOfWork, UnitOfWork>()
+                                  .AddScoped<IMeasurementRepository, MeasurementRepository>()
+                                  .BuildServiceProvider();
+
+            return serviceProvider.GetService<TemperatureMonitor>().StartMonitoring();
         }
     }
 }
