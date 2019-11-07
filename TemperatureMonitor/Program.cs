@@ -15,7 +15,6 @@ namespace TemperatureMonitor
         static Task Main()
         {
 
-            //setup our DI
             var serviceProvider = new ServiceCollection()
                                   .AddSingleton<MongoContext>()
                                   .AddSingleton<TemperatureMonitor>()
@@ -23,7 +22,8 @@ namespace TemperatureMonitor
                                   .AddScoped<IMeasurementRepository, MeasurementRepository>()
                                   .BuildServiceProvider();
 
-            return serviceProvider.GetService<TemperatureMonitor>().StartMonitoring();
+            serviceProvider.GetService<TemperatureMonitor>().Start();
+            return Task.Delay(-1);
         }
     }
 }
