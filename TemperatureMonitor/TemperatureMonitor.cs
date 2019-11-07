@@ -63,9 +63,9 @@ namespace TemperatureMonitor
 
                 await _unitOfWork.Measurements.AddAsync(new Measurement
                                                         {
-                                                            Celsius = temp.Celsius,
-                                                            Fahrenheit = temp.Fahrenheit,
-                                                            Kelvin = temp.Kelvin,
+                                                            Celsius = temp.Celsius - 2, // removing 2C for better accuracy.
+                                                            Fahrenheit = temp.Fahrenheit - 3.6, // removing 3.6F for better accuracy.
+                                                            Kelvin = temp.Kelvin - 2, // removing 2K for better accuracy.
                                                             Humidity = humidity
                                                         }).ConfigureAwait(false);
                 return;
