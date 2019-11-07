@@ -10,8 +10,8 @@ namespace TemperatureMonitor.Persistence.MongoDb
     /// </summary>
     public class DatabaseConfig
     {
-        private const string ConfigFolder = "Configs";
-        private const string ConfigFile = "DatabaseConfig.json";
+        private const string ConfigFolder = "configs";
+        private const string ConfigFile = "databaseConfig.json";
 
         public static DbConfigModel Data;
 

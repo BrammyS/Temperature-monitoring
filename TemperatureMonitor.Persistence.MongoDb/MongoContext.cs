@@ -22,7 +22,7 @@ namespace TemperatureMonitor.Persistence.MongoDb
             if (string.IsNullOrEmpty(connectionString) || string.IsNullOrWhiteSpace(connectionString)) throw new ArgumentNullException(connectionString);
 
             var client = new MongoClient(connectionString);
-            _database = client.GetDatabase("IotLogin");
+            _database = client.GetDatabase("RoomTemperature");
         }
 
 
@@ -33,7 +33,7 @@ namespace TemperatureMonitor.Persistence.MongoDb
         public MongoContext(string connectionString)
         {
             var client = new MongoClient(connectionString);
-            _database = client.GetDatabase("IotLogin");
+            _database = client.GetDatabase("RoomTemperature");
         }
 
 
