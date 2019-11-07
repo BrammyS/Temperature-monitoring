@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Python", "Python", "{1FA58E
 		Python\ds18b20.py = Python\ds18b20.py
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMonitoring.Api.Core", "TemperatureMonitoring.Api.Core\TemperatureMonitoring.Api.Core.csproj", "{D58BDA0A-F0A6-4607-9265-4525B5DD4B36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{9C128229-2906-4025-AB5C-FDA4EE97D248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C128229-2906-4025-AB5C-FDA4EE97D248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C128229-2906-4025-AB5C-FDA4EE97D248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D58BDA0A-F0A6-4607-9265-4525B5DD4B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58BDA0A-F0A6-4607-9265-4525B5DD4B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58BDA0A-F0A6-4607-9265-4525B5DD4B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58BDA0A-F0A6-4607-9265-4525B5DD4B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
