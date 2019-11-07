@@ -120,6 +120,16 @@ namespace TemperatureMonitor.Persistence.Repositories
 
 
         /// <summary>
+        /// Get the last document in a collection.
+        /// </summary>
+        /// <returns>
+        /// A task that represents the asynchronous delete operation.
+        /// The task result contains the requested document.
+        /// </returns>
+        Task<T> GetLastDocumentAsync();
+
+
+        /// <summary>
         /// Get the document count of the collection.
         /// </summary>
         /// <returns>

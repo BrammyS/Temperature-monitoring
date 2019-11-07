@@ -100,6 +100,13 @@ namespace TemperatureMonitor.Persistence.MongoDb.Repositories
 
 
         /// <inheritdoc />
+        public Task<T> GetLastDocumentAsync()
+        {
+            return _mongoCollection.AsQueryable().OrderByDescending(x => x.AddedAtUtc).Take(1).FirstOrDefaultAsync();
+        }
+
+
+        /// <inheritdoc />
         public Task<long> DocumentCountAsync()
         {
             return _mongoCollection.EstimatedDocumentCountAsync();
