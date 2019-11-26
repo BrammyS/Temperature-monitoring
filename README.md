@@ -127,10 +127,14 @@ Move the generated dlls to the raspberry pi.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+You can draw graphs with your data if you are hosting your database on [MongoDb Atlas](https://www.mongodb.com/cloud/atlas).  
+You can view the documentations [here](https://docs.atlas.mongodb.com/).   
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+Here is a little preview on what my graphs looks like.
+<img src="img/tempGraph.png" alt="wiring">
+<img src="img/humidityGraph.png" alt="wiring">
+<img src="img/avgTemp.png" alt="wiring" width="49%">
+<img src="img/avgHumidity.png" alt="wiring" width="49%">
 
 <!-- CONTRIBUTING -->
 ## Contributing
