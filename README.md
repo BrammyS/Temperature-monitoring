@@ -62,7 +62,6 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
@@ -98,17 +97,31 @@ Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-c
 * A MongoDb database  
 You can get a free database [here](https://www.mongodb.com/download-center).
 
+* DHT11
+
+* Male/Female Jumper Wires
+
 ### Installation
  
 1. Clone the repo
 ```sh
 git clone https://github.com/BramEsendam/Temperature-monitoring.git
 ```
-2. Install NPM packages
+2. Publish the project
 ```sh
-npm install
-```
+dotnet publish -r linux-arm
+```  
+Move the generated dlls to the raspberry pi.  
+3. Create a `config` directory in your runtime directory  
 
+4. Create a `DatabaseConfig.json` file in the config folder
+```json
+{
+  "ConnectionString": "Your MongoDb conntion string goes here"
+}
+```
+5. Connect your DHT11 sensor to the raspberry pi
+<img src="img/dhtxx.png" alt="wiring" width="550">
 
 
 <!-- USAGE EXAMPLES -->
@@ -117,14 +130,6 @@ npm install
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/BramEsendam/Temperature-monitoring/issues) for a list of proposed features (and known issues).
-
 
 
 <!-- CONTRIBUTING -->
