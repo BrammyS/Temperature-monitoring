@@ -93,10 +93,10 @@ To get a local copy up and running follow these simple steps.
 
 * .net core 3.0  
 Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-core/3.0).
-
+  
 * A MongoDb database  
 You can get a free database [here](https://www.mongodb.com/download-center).
-
+  
 * DHT11
 
 * Male/Female Jumper Wires
@@ -111,8 +111,7 @@ git clone https://github.com/BramEsendam/Temperature-monitoring.git
 ```sh
 dotnet publish -r linux-arm
 ```  
-Move the generated dlls to the raspberry pi.  
-3. Create a `config` directory in your runtime directory  
+3. Create a `config` directory in your runtime directory
 
 4. Create a `DatabaseConfig.json` file in the config folder
 ```json
