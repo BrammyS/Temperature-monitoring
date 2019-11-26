@@ -37,12 +37,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">YOUR_TITLE</h3>
+  <h3 align="center">Temperature monitoring</h3>
 
   <p align="center">
-    YOUR_SHORT_DESCRIPTION
-    <br />
-    <a href="https://github.com/BramEsendam/Temperature-monitoring"><strong>Explore the docs »</strong></a>
+    Measure the temperature in your room!
     <br />
     <br />
     <a href="https://github.com/BramEsendam/Temperature-monitoring">View Demo</a>
@@ -76,17 +74,15 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo`, `twitter_handle`, `email`
+This is a simple project using C# and a DHT11 sensor to measure temperature and humidity.
+The data that we will gather from the sensor will be stored in a MongoDb database.
+So you will need a raspberry pi and a DHT 11 sensor for this project.
 
 
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+* [MongoDb](https://www.mongodb.com/)
 
 
 <!-- GETTING STARTED -->
@@ -96,11 +92,11 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-```sh
-npm install npm@latest -g
-```
+* .net core 3.0  
+Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-core/3.0).
+
+* A MongoDb database  
+You can get a free database [here](https://www.mongodb.com/download-center).
 
 ### Installation
  
