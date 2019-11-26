@@ -34,7 +34,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/BramEsendam/Temperature-monitoring">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="img/logo.png" alt="Logo" width="80" height="80" style="border-radius: 50%;">
   </a>
 
   <h3 align="center">Temperature monitoring</h3>
