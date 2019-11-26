@@ -98,7 +98,8 @@ Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-c
 * A MongoDb database  
 You can get a free database [here](https://www.mongodb.com/download-center).
 
-* DHT10/DHT11/DHT12/DHT21/DHT22
+* DHT11
+
 * Male/Female Jumper Wires
 
 ### Installation
