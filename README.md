@@ -71,8 +71,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 This is a simple project using C# and a DHT11 sensor to measure temperature and humidity.
 The data that we will gather from the sensor will be stored in a MongoDb database.
 So you will need a raspberry pi and a DHT 11 sensor for this project.
@@ -157,9 +155,10 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [Dotnet/iot](https://github.com/dotnet/iot)
+* [aspnet/DependencyInjection](https://github.com/aspnet/DependencyInjection)
+* [Img Shields](https://shields.io)
+* [Readme template](https://github.com/othneildrew/Best-README-Template)
 
 
 
