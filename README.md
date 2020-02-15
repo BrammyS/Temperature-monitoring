@@ -87,7 +87,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* .net core 3.0  
+* .net core 3.1
 Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-core/3.0).
   
 * A MongoDb database  
