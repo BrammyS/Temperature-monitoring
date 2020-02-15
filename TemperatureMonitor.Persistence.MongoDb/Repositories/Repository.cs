@@ -18,7 +18,6 @@ namespace TemperatureMonitor.Persistence.MongoDb.Repositories
         private readonly IMongoCollection<T> _mongoCollection;
 
 
-        /// <inheritdoc />
         protected Repository(MongoContext context, string collectionName)
         {
             _mongoCollection = context.GetCollection<T>(collectionName);

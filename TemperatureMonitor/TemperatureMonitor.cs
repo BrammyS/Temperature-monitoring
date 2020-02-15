@@ -30,7 +30,7 @@ namespace TemperatureMonitor
         {
             _timer = new Timer
                      {
-                         Interval = TimeSpan.FromMinutes(5).TotalMilliseconds,
+                         Interval = TimeSpan.FromSeconds(20).TotalMilliseconds,
                          AutoReset = true,
                          Enabled = true
                      };
@@ -64,7 +64,7 @@ namespace TemperatureMonitor
                 await _unitOfWork.Measurements.AddAsync(new Measurement
                                                         {
                                                             Celsius = temp.Celsius - 2, // removing 2C for better accuracy.
-                                                            Fahrenheit = temp.Fahrenheit - 3.6, // removing 3.6F for better accuracy.
+                                                            Fahrenheit = temp.Fahrenheit - 3, // removing 3.6F for better accuracy.
                                                             Kelvin = temp.Kelvin - 2, // removing 2K for better accuracy.
                                                             Humidity = humidity
                                                         }).ConfigureAwait(false);
