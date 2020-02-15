@@ -43,8 +43,6 @@
     Measure the temperature in your room!
     <br />
     <br />
-    <a href="https://charts.mongodb.com/charts-misc-projects-hjtia/public/dashboards/08b9e20c-c524-4648-9bdd-e74b113f2405">View Demo</a>
-    ·
     <a href="https://github.com/BramEsendam/Temperature-monitoring/issues">Report Bug</a>
     ·
     <a href="https://github.com/BramEsendam/Temperature-monitoring/issues">Request Feature</a>
