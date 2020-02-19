@@ -69,9 +69,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is a simple project using C# and a DHT11 sensor to measure temperature and humidity.
+This is a simple project using C# and a DHT22 sensor to measure temperature and humidity.
 The data that we will gather from the sensor will be stored in a MongoDb database.
-So you will need a raspberry pi and a DHT 11 sensor for this project.
+So you will need a raspberry pi and a DHT22 sensor for this project.
 
 
 ### Built With
@@ -93,7 +93,7 @@ Follow the steps explained [here](https://dotnet.microsoft.com/download/dotnet-c
 * A MongoDb database  
 You can get a free database [here](https://www.mongodb.com/download-center).
   
-* DHT11
+* DHT22
 
 * Male/Female Jumper Wires
 
@@ -115,7 +115,7 @@ dotnet publish -r linux-arm
   "ConnectionString": "Your MongoDb conntion string goes here"
 }
 ```
-5. Connect your DHT11 sensor to the raspberry pi
+5. Connect your DHT22 sensor to the raspberry pi
 <img src="img/dhtxx.png" alt="wiring" width="550">
 
 

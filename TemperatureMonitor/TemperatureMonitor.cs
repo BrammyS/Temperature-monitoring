@@ -22,7 +22,6 @@ namespace TemperatureMonitor
             _unitOfWork = unitOfWork;
         }
 
-
         /// <summary>
         /// Start the <see cref="Timer"/>.
         /// </summary>
@@ -30,7 +29,7 @@ namespace TemperatureMonitor
         {
             _timer = new Timer
                      {
-                         Interval = TimeSpan.FromSeconds(20).TotalMilliseconds,
+                         Interval = TimeSpan.FromSeconds(15).TotalMilliseconds,
                          AutoReset = true,
                          Enabled = true
                      };
@@ -47,28 +46,39 @@ namespace TemperatureMonitor
         }
 
 
-
         /// <summary>
-        /// Starts monitoring the temperature with the <see cref="Dht11"/> sensor.
+        /// Starts monitoring the temperature with the <see cref="Dht22"/> sensor.
         /// </summary>
         private async Task Measure()
         {
-            using var dht = new Dht11(26);
+            using var dht = new Dht22(26);
             while (true)
             {
+                // Try to read the temperature.
                 var temp = dht.Temperature;
-                if (!dht.IsLastReadSuccessful) continue;
-                var humidity = dht.Humidity;
-                if (!dht.IsLastReadSuccessful) continue;
+                if (!dht.IsLastReadSuccessful)
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(250)).ConfigureAwait(false);
+                    continue;
+                }
 
+                // Try to read the humidity.
+                var humidity = dht.Humidity;
+                if (!dht.IsLastReadSuccessful)
+                {
+                    await Task.Delay(TimeSpan.FromMilliseconds(250)).ConfigureAwait(false);
+                    continue;
+                }
+
+                // Add the measurement to the database.
                 await _unitOfWork.Measurements.AddAsync(new Measurement
                                                         {
-                                                            Celsius = temp.Celsius - 2, // removing 2C for better accuracy.
-                                                            Fahrenheit = temp.Fahrenheit - 3, // removing 3.6F for better accuracy.
-                                                            Kelvin = temp.Kelvin - 2, // removing 2K for better accuracy.
+                                                            Celsius = temp.Celsius,
+                                                            Fahrenheit = temp.Fahrenheit,
+                                                            Kelvin = temp.Kelvin,
                                                             Humidity = humidity
                                                         }).ConfigureAwait(false);
-                return;
+                break;
             }
         }
     }
