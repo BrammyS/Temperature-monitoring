@@ -56,19 +56,15 @@ namespace TemperatureMonitor
             {
                 // Try to read the temperature.
                 var temp = dht.Temperature;
-                if (!dht.IsLastReadSuccessful)
-                {
-                    await Task.Delay(TimeSpan.FromMilliseconds(250)).ConfigureAwait(false);
-                    continue;
-                }
+                if (!dht.IsLastReadSuccessful) continue;
 
                 // Try to read the humidity.
                 var humidity = dht.Humidity;
-                if (!dht.IsLastReadSuccessful)
-                {
-                    await Task.Delay(TimeSpan.FromMilliseconds(250)).ConfigureAwait(false);
-                    continue;
-                }
+                if (!dht.IsLastReadSuccessful) continue;
+
+                // TODO: Try to fix the sudden temp drop when above 26 degrees celsius.
+                // https://github.com/dotnet/iot/issues/984
+                if (temp.Celsius < 10) break;
 
                 // Add the measurement to the database.
                 await _unitOfWork.Measurements.AddAsync(new Measurement
