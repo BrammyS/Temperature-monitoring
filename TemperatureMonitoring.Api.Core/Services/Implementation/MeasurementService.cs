@@ -29,14 +29,6 @@ namespace TemperatureMonitoring.Api.Core.Services.Implementation
             return _unitOfWork.Measurements.WhereAsync(x => x.AddedAtUtc > yesterday);
         }
 
-
-        /// <inheritdoc />
-        public Task<Measurement> GetLatestMeasurement()
-        {
-            return _unitOfWork.Measurements.GetLastDocumentAsync();
-        }
-
-
         /// <inheritdoc />
         public Task AddMeasurement(Measurement measurement)
         {

@@ -36,23 +36,6 @@ namespace TemperatureMonitoring.Api.Controllers
             return _measurementService.GetAllMeasurementsFromToday();
         }
 
-
-        /// <summary>
-        /// Get the latest <see cref="Measurement"/>.
-        /// </summary>
-        /// <example>
-        /// GET: api/measurement/latest
-        /// </example>
-        /// <returns>
-        /// The latest <see cref="Measurement"/>.
-        /// </returns>
-        [HttpGet("latest")]
-        public Task<Measurement> GetLatestMeasurement()
-        {
-            return _measurementService.GetLatestMeasurement();
-        }
-
-
         /// <summary>
         /// Get the latest <see cref="Measurement"/>.
         /// </summary>

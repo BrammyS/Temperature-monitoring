@@ -11,7 +11,6 @@ using TemperatureMonitor.Persistence.Repositories;
 namespace TemperatureMonitor.Persistence.MongoDb.Repositories
 {
 
-    /// <inheritdoc />
     public class Repository<T> : IRepository<T> where T : Document
     {
 
@@ -74,7 +73,14 @@ namespace TemperatureMonitor.Persistence.MongoDb.Repositories
 
 
         /// <inheritdoc />
-        public Task UpdateValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, object>> predicateNew, object newValue)
+        public Task<DeleteResult> RemoveWhereAsync(Expression<Func<T, bool>> predicateSearch)
+        {
+            return _mongoCollection.DeleteManyAsync(predicateSearch);
+        }
+
+
+        /// <inheritdoc />
+        public Task UpdateValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, object?>> predicateNew, object? newValue)
         {
             var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
             var update = Builders<T>.Update.Set(predicateNew, newValue);
@@ -83,10 +89,100 @@ namespace TemperatureMonitor.Persistence.MongoDb.Repositories
 
 
         /// <inheritdoc />
-        public Task UpdateValueAsync(ObjectId objectId, Expression<Func<T, object>> predicateNew, object newValue)
+        public Task UpdateValueAsync(ObjectId objectId, Expression<Func<T, object?>> predicateNew, object? newValue)
         {
             var filter = Builders<T>.Filter.Eq(x => x.BsonObjectId, objectId);
             var update = Builders<T>.Update.Set(predicateNew, newValue);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, int>> predicateIncrement, int incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(e => e.BsonObjectId, objectId);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, int>> predicateIncrement, int incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, short>> predicateIncrement, short incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(e => e.BsonObjectId, objectId);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, short>> predicateIncrement, short incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, byte>> predicateIncrement, byte incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(e => e.BsonObjectId, objectId);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, byte>> predicateIncrement, byte incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, long>> predicateIncrement, long incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(e => e.BsonObjectId, objectId);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, long>> predicateIncrement, long incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, ulong>> predicateIncrement, ulong incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(e => e.BsonObjectId, objectId);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
+            return _mongoCollection.FindOneAndUpdateAsync(filter, update);
+        }
+
+
+        /// <inheritdoc />
+        public Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, ulong>> predicateIncrement, ulong incrementAmount = 1)
+        {
+            var filter = Builders<T>.Filter.Eq(predicateSearch, searchValue);
+            var update = Builders<T>.Update.Inc(predicateIncrement, incrementAmount);
             return _mongoCollection.FindOneAndUpdateAsync(filter, update);
         }
 
@@ -99,16 +195,16 @@ namespace TemperatureMonitor.Persistence.MongoDb.Repositories
 
 
         /// <inheritdoc />
-        public Task<T> GetLastDocumentAsync()
+        public Task<long> DocumentCountAsync()
         {
-            return _mongoCollection.AsQueryable().OrderByDescending(x => x.AddedAtUtc).Take(1).FirstOrDefaultAsync();
+            return _mongoCollection.EstimatedDocumentCountAsync();
         }
 
 
         /// <inheritdoc />
-        public Task<long> DocumentCountAsync()
+        public Task<long> CountWhereAsync(Expression<Func<T, bool>> predicate)
         {
-            return _mongoCollection.EstimatedDocumentCountAsync();
+            return _mongoCollection.CountDocumentsAsync(predicate);
         }
 
 

@@ -19,16 +19,6 @@ namespace TemperatureMonitoring.Api.Core.Services
 
 
         /// <summary>
-        /// Get the latest measurement.
-        /// </summary>
-        /// <returns>
-        /// A task that represents the asynchronous get operation.
-        /// The task result contains the requested <see cref="Measurement"/>.
-        /// </returns>
-        Task<Measurement> GetLatestMeasurement();
-
-
-        /// <summary>
         /// Add a measurement.
         /// </summary>
         /// <param name="measurement">The <see cref="Measurement"/> that will be added to the database.</param>

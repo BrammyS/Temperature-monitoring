@@ -90,13 +90,24 @@ namespace TemperatureMonitor.Persistence.Repositories
 
 
         /// <summary>
+        /// Remove rows/documents from the table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the rows/documents.</param>
+        /// <returns>
+        /// A task that represents the asynchronous delete operation.
+        /// The task result contains the <see cref="DeleteResult"/> of the delete operation.
+        /// </returns>
+        Task<DeleteResult> RemoveWhereAsync(Expression<Func<T, bool>> predicateSearch);
+
+
+        /// <summary>
         /// Update a value of a row/document in a table/collection.
         /// </summary>
         /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
         /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
         /// <param name="predicateNew">The <see cref="Expression"/> that will select which variable of the row/document will be updated.</param>
         /// <param name="newValue">The value that will be set to the <paramref name="predicateNew"/> value.</param>
-        Task UpdateValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, object>> predicateNew, object newValue);
+        Task UpdateValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, object?>> predicateNew, object? newValue);
 
 
         /// <summary>
@@ -105,7 +116,102 @@ namespace TemperatureMonitor.Persistence.Repositories
         /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be updated.</param>
         /// <param name="predicateNew">The <see cref="Expression"/> that will select which variable of the row/document will be updated.</param>
         /// <param name="newValue">The value that will be set to the <paramref name="predicateNew"/> value.</param>
-        Task UpdateValueAsync(ObjectId objectId, Expression<Func<T, object>> predicateNew, object newValue);
+        Task UpdateValueAsync(ObjectId objectId, Expression<Func<T, object?>> predicateNew, object? newValue);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be Incremented.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, int>> predicateIncrement, int incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, int>> predicateIncrement, int incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be Incremented.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, short>> predicateIncrement, short incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, short>> predicateIncrement, short incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be Incremented.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, byte>> predicateIncrement, byte incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, byte>> predicateIncrement, byte incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be Incremented.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, long>> predicateIncrement, long incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, long>> predicateIncrement, long incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="objectId">The <see cref="ObjectId"/> of the object that will be Incremented.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(ObjectId objectId, Expression<Func<T, ulong>> predicateIncrement, ulong incrementAmount = 1);
+
+
+        /// <summary>
+        /// Increment a value of a row/document in a table/collection.
+        /// </summary>
+        /// <param name="predicateSearch">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <param name="searchValue">The value that should match the <paramref name="predicateSearch"/> value.</param>
+        /// <param name="predicateIncrement">The <see cref="Expression"/> that will select which variable of the row/document will be Incremented.</param>
+        /// <param name="incrementAmount">The amount that will be incremented to the new number.</param>
+        Task IncrementValueAsync(Expression<Func<T, object>> predicateSearch, object searchValue, Expression<Func<T, ulong>> predicateIncrement, ulong incrementAmount = 1);
 
 
         /// <summary>
@@ -120,16 +226,6 @@ namespace TemperatureMonitor.Persistence.Repositories
 
 
         /// <summary>
-        /// Get the last document in a collection.
-        /// </summary>
-        /// <returns>
-        /// A task that represents the asynchronous delete operation.
-        /// The task result contains the requested document.
-        /// </returns>
-        Task<T> GetLastDocumentAsync();
-
-
-        /// <summary>
         /// Get the document count of the collection.
         /// </summary>
         /// <returns>
@@ -137,6 +233,17 @@ namespace TemperatureMonitor.Persistence.Repositories
         /// The task result contains the document count.
         /// </returns>
         Task<long> DocumentCountAsync();
+
+
+        /// <summary>
+        /// Get the document count where the <paramref name="predicate"/> is true.
+        /// </summary>
+        /// <param name="predicate">The <see cref="Expression"/> that will be used to look for the row/document.</param>
+        /// <returns>
+        /// A task that represents the asynchronous delete operation.
+        /// The task result contains the document count.
+        /// </returns>
+        Task<long> CountWhereAsync(Expression<Func<T, bool>> predicate);
 
 
         /// <summary>

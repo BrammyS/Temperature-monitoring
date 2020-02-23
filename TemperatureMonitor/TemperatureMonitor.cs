@@ -51,6 +51,7 @@ namespace TemperatureMonitor
         /// </summary>
         private async Task Measure()
         {
+
             using var dht = new Dht22(26);
             while (true)
             {
@@ -65,6 +66,7 @@ namespace TemperatureMonitor
                 // TODO: Try to fix the sudden temp drop when above 26 degrees celsius.
                 // https://github.com/dotnet/iot/issues/984
                 if (temp.Celsius < 10) break;
+                if (humidity > 100) break;
 
                 // Add the measurement to the database.
                 await _unitOfWork.Measurements.AddAsync(new Measurement
