@@ -1,21 +1,19 @@
-name: .net core build.
+name: .NET Core Build
 
 on: [push]
 
 jobs:
-  build_and_test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macOS-latest, ubuntu-latest, windows-latest]
+  build:
+
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Setup .NET Core if needed
-      uses: actions/setup-dotnet@v1.2.0
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.102
-      if: matrix.os == 'macOS-latest' || matrix.os == 'ubuntu-latest'
-    - uses: actions/checkout@v1
     - name: Build with dotnet
-      run: dotnet build ./src/Solution.sln --configuration Release
-    - name: Test with dotnet
-      run: dotnet test ./src/Solution.sln --configuration Release
+      run: dotnet build --configuration Release
+    - name: Build with dotnet
+      run: dotnet test --configuration Release
