@@ -27,7 +27,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
+![.NET Core Build](https://github.com/BramEsendam/Temperature-monitoring/workflows/.NET%20Core%20Build/badge.svg)
 
 
 <!-- PROJECT LOGO -->
