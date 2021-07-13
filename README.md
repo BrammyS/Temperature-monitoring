@@ -27,13 +27,13 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-![.NET Core Build](https://github.com/BramEsendam/Temperature-monitoring/workflows/.NET%20Core%20Build/badge.svg)
+![.NET Core Build](https://github.com/brammys/Temperature-monitoring/workflows/.NET%20Core%20Build/badge.svg)
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/BramEsendam/Temperature-monitoring">
+  <a href="https://github.com/brammys/Temperature-monitoring">
     <img src="img/logo.png" alt="Logo" width="160" height="160">
   </a>
 
@@ -43,9 +43,9 @@
     Measure the temperature in your room!
     <br />
     <br />
-    <a href="https://github.com/BramEsendam/Temperature-monitoring/issues">Report Bug</a>
+    <a href="https://github.com/brammys/Temperature-monitoring/issues">Report Bug</a>
     ·
-    <a href="https://github.com/BramEsendam/Temperature-monitoring/issues">Request Feature</a>
+    <a href="https://github.com/brammys/Temperature-monitoring/issues">Request Feature</a>
   </p>
 </p>
 
