@@ -3,21 +3,18 @@ using TemperatureMonitor.Persistence.UnitsOfWorks;
 
 namespace TemperatureMonitor.Persistence.MongoDb.UnitsOfWork
 {
-
-    /// <inheritdoc/>
+    /// <inheritdoc />
     public class UnitOfWork : IUnitOfWork
-        {
-
-        /// <inheritdoc/>
-        public IMeasurementRepository Measurements { get; }
-
-
+    {
         public UnitOfWork(IMeasurementRepository measurementRepository)
         {
             Measurements = measurementRepository;
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
+        public IMeasurementRepository Measurements { get; }
+
+        /// <inheritdoc />
         public void Dispose()
         {
         }

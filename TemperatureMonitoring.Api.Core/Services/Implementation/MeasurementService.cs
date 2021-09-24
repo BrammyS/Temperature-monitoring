@@ -6,21 +6,18 @@ using TemperatureMonitor.Persistence.UnitsOfWorks;
 
 namespace TemperatureMonitoring.Api.Core.Services.Implementation
 {
-
     public class MeasurementService : IMeasurementService
     {
-
         private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
-        /// Creates a new <see cref="MeasurementService"/>.
+        ///     Creates a new <see cref="MeasurementService" />.
         /// </summary>
-        /// <param name="unitOfWork">The <see cref="IUnitOfWork"/> that will be used to query to the database.</param>
+        /// <param name="unitOfWork">The <see cref="IUnitOfWork" /> that will be used to query to the database.</param>
         public MeasurementService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-
 
         /// <inheritdoc />
         public Task<IEnumerable<Measurement>> GetAllMeasurementsFromToday()

@@ -4,15 +4,13 @@ using TemperatureMonitor.Persistence.Repositories;
 
 namespace TemperatureMonitor.Persistence.UnitsOfWorks
 {
-
     /// <summary>
-    /// This UnitOfWork contains all the Repositories used to query the all the tables/collections.
+    ///     This UnitOfWork contains all the Repositories used to query the all the tables/collections.
     /// </summary>
     public interface IUnitOfWork : IDisposable
     {
-
         /// <summary>
-        /// Contains all the queries to the <see cref="Measurement"/> table/collection.
+        ///     Contains all the queries to the <see cref="Measurement" /> table/collection.
         /// </summary>
         IMeasurementRepository Measurements { get; }
     }

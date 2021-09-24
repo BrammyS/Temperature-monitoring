@@ -13,22 +13,21 @@ namespace TemperatureMonitoring.Api.Controllers
         private readonly IMeasurementService _measurementService;
 
         /// <summary>
-        /// Creates a new <see cref="MeasurementController"/>.
+        ///     Creates a new <see cref="MeasurementController" />.
         /// </summary>
         public MeasurementController(IMeasurementService measurementService)
         {
             _measurementService = measurementService;
         }
 
-
         /// <summary>
-        /// Get all the <see cref="Measurement"/>s from today.
+        ///     Get all the <see cref="Measurement" />s from today.
         /// </summary>
         /// <example>
-        /// GET: api/measurement
+        ///     GET: api/measurement
         /// </example>
         /// <returns>
-        /// A list of <see cref="Measurement"/>s that are from today.
+        ///     A list of <see cref="Measurement" />s that are from today.
         /// </returns>
         [HttpGet]
         public Task<IEnumerable<Measurement>> Get()
@@ -37,13 +36,13 @@ namespace TemperatureMonitoring.Api.Controllers
         }
 
         /// <summary>
-        /// Get the latest <see cref="Measurement"/>.
+        ///     Get the latest <see cref="Measurement" />.
         /// </summary>
         /// <example>
-        /// POST: api/measurement
+        ///     POST: api/measurement
         /// </example>
         /// <returns>
-        /// The added <see cref="Measurement"/>.
+        ///     The added <see cref="Measurement" />.
         /// </returns>
         [HttpPost]
         public async Task<Measurement> Post([FromBody] Measurement newMeasurement)

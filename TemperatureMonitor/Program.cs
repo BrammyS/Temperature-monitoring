@@ -8,13 +8,10 @@ using TemperatureMonitor.Persistence.UnitsOfWorks;
 
 namespace TemperatureMonitor
 {
-
     public class Program
     {
-
         static Task Main()
         {
-
             var serviceProvider = new ServiceCollection()
                                   .AddSingleton<MongoContext>()
                                   .AddSingleton<TemperatureMonitor>()
@@ -22,7 +19,7 @@ namespace TemperatureMonitor
                                   .AddScoped<IMeasurementRepository, MeasurementRepository>()
                                   .BuildServiceProvider();
 
-            serviceProvider.GetService<TemperatureMonitor>().Start();
+            serviceProvider.GetRequiredService<TemperatureMonitor>().Start();
             return Task.Delay(-1);
         }
     }

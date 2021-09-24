@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Timers;
 using Iot.Device.DHTxx;
+using Microsoft.Extensions.Logging;
 using TemperatureMonitor.Persistence.Domain.Collections;
 using TemperatureMonitor.Persistence.UnitsOfWorks;
 
@@ -11,7 +13,7 @@ namespace TemperatureMonitor
     public class TemperatureMonitor
     {
         private readonly IUnitOfWork _unitOfWork;
-        private Timer _timer;
+        private readonly Timer _timer;
 
         /// <summary>
         /// Creates a new <see cref="TemperatureMonitor"/>.
@@ -20,6 +22,12 @@ namespace TemperatureMonitor
         public TemperatureMonitor(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _timer = new Timer
+            {
+                Interval = TimeSpan.FromSeconds(60).TotalMilliseconds,
+                AutoReset = true,
+                Enabled = true
+            };
         }
 
         /// <summary>
@@ -27,12 +35,7 @@ namespace TemperatureMonitor
         /// </summary>
         public void Start()
         {
-            _timer = new Timer
-                     {
-                         Interval = TimeSpan.FromSeconds(15).TotalMilliseconds,
-                         AutoReset = true,
-                         Enabled = true
-                     };
+            Console.WriteLine("Starting monitoring");
             _timer.Elapsed += TimerElapsed;
         }
 
@@ -51,7 +54,6 @@ namespace TemperatureMonitor
         /// </summary>
         private async Task Measure()
         {
-
             using var dht = new Dht22(26);
             while (true)
             {
@@ -60,22 +62,34 @@ namespace TemperatureMonitor
                 if (!dht.IsLastReadSuccessful) continue;
 
                 // Try to read the humidity.
-                var humidity = dht.Humidity;
+                var humidity = dht.Humidity.Percent;
                 if (!dht.IsLastReadSuccessful) continue;
 
-                // TODO: Try to fix the sudden temp drop when above 26 degrees celsius.
-                // https://github.com/dotnet/iot/issues/984
-                if (temp.Celsius < 10) break;
+                // In case something goes horribly wrong
                 if (humidity > 100) break;
 
+                Console.WriteLine("New measurement:" +
+                                  $"{temp.DegreesCelsius.ToString(CultureInfo.InvariantCulture)}c, " +
+                                  $"{temp.DegreesFahrenheit.ToString(CultureInfo.InvariantCulture)}f, " +
+                                  $"humidity {humidity.ToString(CultureInfo.InvariantCulture)}%");
+                
                 // Add the measurement to the database.
-                await _unitOfWork.Measurements.AddAsync(new Measurement
-                                                        {
-                                                            Celsius = temp.Celsius,
-                                                            Fahrenheit = temp.Fahrenheit,
-                                                            Kelvin = temp.Kelvin,
-                                                            Humidity = humidity
-                                                        }).ConfigureAwait(false);
+                try
+                {
+                    await _unitOfWork.Measurements.AddAsync(new Measurement
+                    {
+                        Celsius = temp.DegreesCelsius,
+                        Fahrenheit = temp.DegreesFahrenheit,
+                        Kelvin = temp.Kelvins,
+                        Humidity = humidity
+                    }).ConfigureAwait(false);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Failed to add measurement to the DB, reason {e.Message}");
+                    throw;
+                }
+
                 break;
             }
         }
