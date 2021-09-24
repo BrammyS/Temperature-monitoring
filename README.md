@@ -107,7 +107,7 @@ git clone https://github.com/BramEsendam/Temperature-monitoring.git
 ```sh
 dotnet publish -r linux-arm
 ```  
-3. Create a `config` directory in your runtime directory
+3. Create a `configs` directory in your runtime directory
 
 4. Create a `databaseConfig.json` file in the config folder
 ```json
