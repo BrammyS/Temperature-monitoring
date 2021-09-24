@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TemperatureMonitor.Persistence.MongoDb\TemperatureMonitor.Persistence.MongoDb.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\TemperatureMonitor.Persistence.MongoDb\TemperatureMonitor.Persistence.MongoDb.csproj"/>
+    </ItemGroup>
 
 </Project>

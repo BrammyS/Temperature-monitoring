@@ -4,9 +4,8 @@ using TemperatureMonitor.Persistence.MongoDb.Structs;
 
 namespace TemperatureMonitor.Persistence.MongoDb
 {
-
     /// <summary>
-    /// Loads the db connection string from the <see cref="ConfigFile"/>.
+    ///     Loads the db connection string from the <see cref="ConfigFile" />.
     /// </summary>
     public class DatabaseConfig
     {
@@ -17,7 +16,6 @@ namespace TemperatureMonitor.Persistence.MongoDb
 
         static DatabaseConfig()
         {
-
             if (!Directory.Exists(ConfigFolder)) Directory.CreateDirectory(ConfigFolder);
 
             if (!File.Exists(ConfigFolder + "/" + ConfigFile))
@@ -34,4 +32,3 @@ namespace TemperatureMonitor.Persistence.MongoDb
         }
     }
 }
-

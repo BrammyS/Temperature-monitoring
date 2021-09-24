@@ -10,7 +10,7 @@ namespace TemperatureMonitor
 {
     public class Program
     {
-        static Task Main()
+        private static Task Main()
         {
             var serviceProvider = new ServiceCollection()
                                   .AddSingleton<MongoContext>()

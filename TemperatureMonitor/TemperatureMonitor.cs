@@ -3,22 +3,20 @@ using System.Globalization;
 using System.Threading.Tasks;
 using System.Timers;
 using Iot.Device.DHTxx;
-using Microsoft.Extensions.Logging;
 using TemperatureMonitor.Persistence.Domain.Collections;
 using TemperatureMonitor.Persistence.UnitsOfWorks;
 
 namespace TemperatureMonitor
 {
-
     public class TemperatureMonitor
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly Timer _timer;
+        private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
-        /// Creates a new <see cref="TemperatureMonitor"/>.
+        ///     Creates a new <see cref="TemperatureMonitor" />.
         /// </summary>
-        /// <param name="unitOfWork">The <see cref="IUnitOfWork"/> that will be used to query to the database.</param>
+        /// <param name="unitOfWork">The <see cref="IUnitOfWork" /> that will be used to query to the database.</param>
         public TemperatureMonitor(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -31,7 +29,7 @@ namespace TemperatureMonitor
         }
 
         /// <summary>
-        /// Start the <see cref="Timer"/>.
+        ///     Start the <see cref="Timer" />.
         /// </summary>
         public void Start()
         {
@@ -39,18 +37,16 @@ namespace TemperatureMonitor
             _timer.Elapsed += TimerElapsed;
         }
 
-
         /// <summary>
-        /// Activated when <see cref="_timer"/> is elapsed.
+        ///     Activated when <see cref="_timer" /> is elapsed.
         /// </summary>
         private async void TimerElapsed(object sender, ElapsedEventArgs e)
         {
             await Measure().ConfigureAwait(false);
         }
 
-
         /// <summary>
-        /// Starts monitoring the temperature with the <see cref="Dht22"/> sensor.
+        ///     Starts monitoring the temperature with the <see cref="Dht22" /> sensor.
         /// </summary>
         private async Task Measure()
         {
@@ -72,7 +68,7 @@ namespace TemperatureMonitor
                                   $"{temp.DegreesCelsius.ToString(CultureInfo.InvariantCulture)}c, " +
                                   $"{temp.DegreesFahrenheit.ToString(CultureInfo.InvariantCulture)}f, " +
                                   $"humidity {humidity.ToString(CultureInfo.InvariantCulture)}%");
-                
+
                 // Add the measurement to the database.
                 try
                 {

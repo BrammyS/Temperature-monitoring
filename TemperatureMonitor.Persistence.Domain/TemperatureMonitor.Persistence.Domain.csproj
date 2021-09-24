@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MongoDB.Bson" Version="2.13.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Bson" Version="2.13.1"/>
+    </ItemGroup>
 
 </Project>

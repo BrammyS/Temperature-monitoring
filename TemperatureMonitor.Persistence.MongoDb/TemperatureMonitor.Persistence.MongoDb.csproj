@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="MongoDB.Driver" Version="2.13.1"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\TemperatureMonitor.Persistence.Domain\TemperatureMonitor.Persistence.Domain.csproj" />
-    <ProjectReference Include="..\TemperatureMonitor.Persistence\TemperatureMonitor.Persistence.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\TemperatureMonitor.Persistence.Domain\TemperatureMonitor.Persistence.Domain.csproj"/>
+        <ProjectReference Include="..\TemperatureMonitor.Persistence\TemperatureMonitor.Persistence.csproj"/>
+    </ItemGroup>
 
 </Project>

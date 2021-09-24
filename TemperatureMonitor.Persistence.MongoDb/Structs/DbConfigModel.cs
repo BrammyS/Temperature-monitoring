@@ -1,9 +1,8 @@
 ﻿namespace TemperatureMonitor.Persistence.MongoDb.Structs
 {
-
     public struct DbConfigModel
     {
-        public string ConnectionString { get; private set; }
+        public string ConnectionString { get; }
 
         public DbConfigModel(string connectionString)
         {
