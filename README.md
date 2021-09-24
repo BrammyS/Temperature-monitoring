@@ -109,7 +109,7 @@ dotnet publish -r linux-arm
 ```  
 3. Create a `config` directory in your runtime directory
 
-4. Create a `DatabaseConfig.json` file in the config folder
+4. Create a `databaseConfig.json` file in the config folder
 ```json
 {
   "ConnectionString": "Your MongoDb conntion string goes here"
